@@ -1,18 +1,3 @@
-# data(iris)
-# iris.scaled <- cbind(scale(iris[-5]), iris[5])
-# 
-# set.seed(1000)
-# index <- c(sample(1:50, 35), sample(51:100, 35), sample(101:150, 35))
-# train <- iris.scaled[index, ]
-# test <- iris.scaled[-index, ]
-# 
-# ### refer .using R method ###
-# library(nnet)
-# model <- nnet(Species ~ ., data = train, size = 2, decay = 5e-04)
-# summary(model)
-# ### ### ### ### ### ### ###
-
-
 sigmoid_ <- function( x ) {
   return(  1 / (1 + exp(-x)) )
 }
@@ -36,15 +21,6 @@ costV <- function( par, y, x, w ){
   err <- sum( (y-y_hat)^2 )/2
   return( err )
 }
-
-### for Test
-y <- Y
-x <- X
-
-hiddenSize = 5
-learn_rate = 0.0001
-iterations = 10
-### for Test
 
 nn_ <- function(x, y, hiddenSize = 5, learn_rate = 0.0001 , iterations = 10 ) {
   x <- as.matrix(x)
@@ -84,6 +60,10 @@ x3[16:30] = x3[16:30] - rpois(n = 15, lambda = 2)
 
 Y = c(rbinom(5, 1,0.1),rbinom(10, 1,0.25),rbinom(10, 1,0.75),rbinom(5, 1,0.9))
 X = cbind(x0,x1,x2,x3)
+
+
+### for Test
+nn_(X, Y)
 
 
 ### Refer. using R method
