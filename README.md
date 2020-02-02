@@ -28,7 +28,7 @@
     
     2. Refer. using R method
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png | height=100)
+    ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png =100x200)
    ---
 
 ## 4. K-means
