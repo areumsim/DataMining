@@ -19,16 +19,16 @@
 
     2. Refer. using R method
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610967-6411b000-4620-11ea-8248-a32561376581.png)
+    ![image](https://user-images.githubusercontent.com/31869418/73610967-6411b000-4620-11ea-8248-a32561376581.png){: width=200px}
 
   - Test2 ( USArrests )
     1. Implement CART
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610993-a3400100-4620-11ea-9c67-5034cd62751b.png){: height=50px}
+    ![image](https://user-images.githubusercontent.com/31869418/73610993-a3400100-4620-11ea-9c67-5034cd62751b.png)
     
     2. Refer. using R method
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png){: height=50px}
+    ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png)
    ---
 
 ## 4. K-means
