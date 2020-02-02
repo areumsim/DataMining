@@ -1,33 +1,10 @@
-# library(e1071)
-
-library("mlbench")
-data(PimaIndiansDiabetes)
-df <- PimaIndiansDiabetes
-#  pos (268) , neg (500)
-
-library(caret)
-set.seed(1) 
-idx<-createDataPartition(y=df$diabetes, p=0.7, list=FALSE) 
-train<-df[idx, ]
-test<-df[-idx, ]
-
-### Run Refer NaiveBayes Method
-fit_ref <- naiveBayes(diabetes~., data = train)
-pred_ref <- predict(fit_ref, test, type='class')
-confusionMatrix(pred_ref, test$diabetes)$table
-
-### Run Implement Method
-model <- naiveBayes_(train[,9], train[,-9])
-pred <- predict_(model, test[,-9])
-confusionMatrix(pred, test$diabetes)$table
-
 
 naiveBayes_ <- function( y, trainDf ){
   negPriorProb <- sum(y=='neg')/length(y)
   posPriorProb <- sum(y=='pos')/length(y)
   
   # probabiality of individual column
-  # °¢ º¯¼öÀÇ column¸¶´Ù ¿¹Ãø È®·üÀ» ±¸ÇÏ±â À§ÇÏ¿©, °¢ columnº°·Î ¿¹Ãø ¸ðµ¨ »ý¼º¼º
+  # ê° ë³€ìˆ˜ì˜ columnë§ˆë‹¤ ì˜ˆì¸¡ í™•ë¥ ì„ êµ¬í•˜ê¸° ìœ„í•˜ì—¬, ê° columnë³„ë¡œ ì˜ˆì¸¡ ëª¨ë¸ ìƒì„±ì„±
   # predModelList <- as.list(NA)
   # for( i in 1:(ncol(train)-1) ){
   #   predModelList[[i]] <- glm(diabetes~train[,c(i)], data = train, family = "binomial")
@@ -86,3 +63,27 @@ predict_ <- function( model, test ) {
   
   return( as.factor(predList) )
 }
+
+
+### Data ###
+library("mlbench")
+data(PimaIndiansDiabetes)
+df <- PimaIndiansDiabetes
+#  pos (268) , neg (500)
+
+library(caret)
+set.seed(1) 
+idx <- createDataPartition(y=df$diabetes, p=0.7, list=FALSE) 
+train <- df[idx, ]
+test <- df[-idx, ]
+
+### Run Implement Method
+model <- naiveBayes_(train[,9], train[,-9])
+pred <- predict_(model, test[,-9])
+confusionMatrix(pred, test$diabetes)$table
+
+### Run Refer NaiveBayes Method
+library(e1071)
+fit_ref <- naiveBayes(diabetes~., data = train)
+pred_ref <- predict(fit_ref, test, type='class')
+confusionMatrix(pred_ref, test$diabetes)$table
