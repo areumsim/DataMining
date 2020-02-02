@@ -33,12 +33,11 @@
 ## 4. K-means
   - Test1 (iris)
   
-  <img src="https://user-images.githubusercontent.com/31869418/73611231-16e30d80-4623-11ea-9710-9411e722dee9.png" height="200">
+  <img src="https://user-images.githubusercontent.com/31869418/73611278-8bb64780-4623-11ea-9191-329ba4912947.png" height="300">
 
-  <img src="https://user-images.githubusercontent.com/31869418/73611225-0df23c00-4623-11ea-92c5-eed6ee9dc553.png" height="200">
+  <img src="https://user-images.githubusercontent.com/31869418/73611277-8658fd00-4623-11ea-9f5d-1c6b60e8cfcf.png height="300">
 
-  <img src="https://user-images.githubusercontent.com/31869418/73611219-0337a700-4623-11ea-9d1f-86ca3d39fa8d.png" height="200">
-
+  <img src="https://user-images.githubusercontent.com/31869418/73611274-80631c00-4623-11ea-9c86-d2a30ce95205.png height="300">
 
 ## 4. K-NN
 
