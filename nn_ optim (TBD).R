@@ -39,11 +39,6 @@ nn_ <- function(x, y, hiddenSize = 5, learn_rate = 0.0001 , iterations = 10 ) {
     w_optim <- optim(par=w, fn=costW, y=y, x=x, v=v) 
     v_optim <- optim(par=v, fn=costV, y=y, x=x, w=w) 
     
-    # bp <- backpropagate(x, y,
-    #                     y_hat = ff$output,
-    #                     w1, w2,
-    #                     h = ff$h,
-    #                     learn_rate = learn_rate)
     w1 <- bp$w1
     w2 <- bp$w2
   }
