@@ -8,9 +8,7 @@ author: by Stoney
 date: '`r paste0(Sys.Date())`' # current time
 
 output:
-
   html_document:
-  
     df_print: paged # data frame printing (default, kable, tibble, paged)
     theme: paper # from Bootswatch library
     toc: TRUE # table of contents
