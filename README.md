@@ -11,7 +11,6 @@
   - TODO : Numerical data
 
 ## 3. CART
-    ---
   - Test1 (iris)
     1. Implement CART
     
@@ -30,7 +29,6 @@
 
     <img src="https://user-images.githubusercontent.com/31869418/73610967-6411b000-4620-11ea-8248-a32561376581.png" height="200">
 
-   ---
 
 ## 4. K-means
 
