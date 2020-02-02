@@ -13,44 +13,18 @@
 ## 3. CART
     ---
   - Test1 (iris)
-  > df <- iris
-  
-  > rpart_(5, df, entropyThreshold=0.2)
-  
-  0 :Petal.Length <= 1.9 
-  
-  0 :L- < setosa >
-  
-  1 :	Petal.Width <= 1.8 
-  
-  1 :	L- < versicolor >
-  
-  1 :	R- < virginica >
- 
-  
+    1. Implement CART
+    ![image](https://user-images.githubusercontent.com/31869418/73610973-75f35300-4620-11ea-93f4-85b7e238951b.png)
+
+    2. Refer. using R method
+    ![image](https://user-images.githubusercontent.com/31869418/73610967-6411b000-4620-11ea-8248-a32561376581.png)
+
   - Test2 ( USArrests )
-  
-  > df <- USArrests
-  
-  > df$UrbanPop1 <- ifelse(df$UrbanPop> median(USArrests$UrbanPop), "Large", "Small")
-  
-  > df <- df[, names(df)!="UrbanPop"] # UrbanPop 제외
-  
-  > rpart_(4, df,  entropyThreshold=0.5)
-  
-   0 :Rape <= 22.5 
-   
-   1 :	Murder <= 2.7 
-   
-   1 :	L- < Small >
-   
-   2 :		Murder <= 7.4 
-   
-   2 :		L- < Large >
-   
-   2 :		R- < Small >
-   
-   0 :R- < Large >
+  1. Implement CART
+  ![image](https://user-images.githubusercontent.com/31869418/73610993-a3400100-4620-11ea-9c67-5034cd62751b.png)
+
+  2. Refer. using R method
+  ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png)
    ---
 
 ## 4. K-means
