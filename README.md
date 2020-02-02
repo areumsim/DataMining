@@ -3,10 +3,12 @@
 ---
 
 ## 1. Logistric Regrssion (binary)
-  - optim() 함수 사용
-  - optim() 함수 사용하지 않고, 직접 
+  - with optim() 
+  - without optim()
 
 ## 2. Naive Bayes
+  - only binary data
+  - TODO : Numerical data
 
 ## 3. CART
 
