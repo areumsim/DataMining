@@ -2,22 +2,10 @@
 data(HouseVotes84, package = "mlbench")
 data <- na.omit(HouseVotes84)
 
-### Refer with R method ###
-library(e1071)
-model_ref <- naiveBayes(Class ~ ., data = data)  #, laplace = 3)
-pred_ref <- predict(model_ref, data[,-1])
-table(pred_ref, data$Class)
-### ### ### ### ### ### ###
-
-model <- Bayes_( data[,1], data[,-1])
-pred <- predict_(model, data[,-1])
-table(pred, data$Class)
-
-
 Bayes_ <- function(Class, df){ 
   neg <- levels(Class)[1]
   pos <- levels(Class)[2]
-  prob_neg <- sum(Class==neg)/nrow(df)   #1-prob_pos
+  prob_neg <- sum(Class==neg)/nrow(df)   # 1- prob_pos
   prob_pos <- sum(Class==pos)/nrow(df)
   prob_ <- c( neg = prob_neg, pos = prob_pos)
   
@@ -43,6 +31,7 @@ Bayes_ <- function(Class, df){
 predict_ <- function( model , df ){
   pred_List <- rep(0, nrow(df))
   
+  # prior probability
   prob_neg <-  model$Probabilities[[1]]
   prob_pos <- model$Probabilities[[2]]
   
@@ -50,7 +39,7 @@ predict_ <- function( model , df ){
   
   for( j in 1:nrow(df) ){
     tmp_prob_neg <- prob_neg
-    tmp_prob_pos <-prob_pos
+    tmp_prob_pos <- prob_pos
     
     for( i in 1:ncol(df) ){
       n <- colnames(condtional_Prob[[i]])[1]
@@ -72,6 +61,14 @@ predict_ <- function( model , df ){
 
 
 
+### Run ### ###
+model <- Bayes_( data[,1], data[,-1])
+pred <- predict_(model, data[,-1])
+table(pred, data$Class)
 
-
+### Refer with R method ###
+library(e1071)
+model_ref <- naiveBayes(Class ~ ., data = data)
+pred_ref <- predict(model_ref, data[,-1])
+table(pred_ref, data$Class)
 
