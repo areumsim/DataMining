@@ -12,7 +12,7 @@
 
 ## 3. CART
 
-## 3. K-means
+## 4. K-means
 
 ## 4. K-NN
 
