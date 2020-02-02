@@ -15,20 +15,20 @@
   - Test1 (iris)
     1. Implement CART
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610973-75f35300-4620-11ea-93f4-85b7e238951b.png)
+    ![image](https://user-images.githubusercontent.com/31869418/73610973-75f35300-4620-11ea-93f4-85b7e238951b.png){: height="100"}
 
     2. Refer. using R method
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610967-6411b000-4620-11ea-8248-a32561376581.png)
+    ![image](https://user-images.githubusercontent.com/31869418/73610967-6411b000-4620-11ea-8248-a32561376581.png){: height="50"}
 
   - Test2 ( USArrests )
     1. Implement CART
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610993-a3400100-4620-11ea-9c67-5034cd62751b.png)
+    ![image](https://user-images.githubusercontent.com/31869418/73610993-a3400100-4620-11ea-9c67-5034cd62751b.png){: height="50"}
     
     2. Refer. using R method
     
-    ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png)
+    ![image](https://user-images.githubusercontent.com/31869418/73610998-adfa9600-4620-11ea-8bb6-9552bf2e0c22.png){: height="50"}
    ---
 
 ## 4. K-means
