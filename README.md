@@ -35,9 +35,10 @@
   
   <img src="https://user-images.githubusercontent.com/31869418/73611278-8bb64780-4623-11ea-9191-329ba4912947.png" height="300">
 
-  <img src="https://user-images.githubusercontent.com/31869418/73611277-8658fd00-4623-11ea-9f5d-1c6b60e8cfcf.png height="300">
+  <img src="https://user-images.githubusercontent.com/31869418/73611277-8658fd00-4623-11ea-9f5d-1c6b60e8cfcf.png" height="300">
 
-  <img src="https://user-images.githubusercontent.com/31869418/73611274-80631c00-4623-11ea-9c86-d2a30ce95205.png height="300">
+  <img src="https://user-images.githubusercontent.com/31869418/73611274-80631c00-4623-11ea-9c86-d2a30ce95205.png" height="300">
+
 
 ## 4. K-NN
 
