@@ -1,18 +1,19 @@
-Cal_e <- function( numberOfY, df ) {
-  n <- nrow(df)
-  y <-  unique(df[, numberOfY])
+Find_criteria <- function( numberOfY, df, entropyThreshold ) {
   
-  entropy <- lapply( y, function(x){
-    nrow(df[df[, numberOfY]==x, ])/n * log2(nrow(df[df[, numberOfY]==x, ])/n)
-  } )
+  Cal_e <- function( numberOfY, df ) {
+    n <- nrow(df)
+    y <-  unique(df[, numberOfY])
+    
+    entropy <- lapply( y, function(x) {
+      nrow(df[df[, numberOfY]==x, ])/n * log2(nrow(df[df[, numberOfY]==x, ])/n)
+    } )
+    return ( -sum(unlist(entropy), na.rm=T) )
+  }
   
-  return ( -sum(unlist(entropy), na.rm=T)  )
-}
-
-Find_criteria <- function( numberOfY, df , entropyThreshold) {
   originEntropy <- Cal_e(numberOfY, df)
+  
   if( originEntropy == 0 ){
-    return ( list( colNumber=-1) )
+    return ( list(colNumber=-1) )
   }
   
   criteria <- list( criteria=c(), entropy=c() )
@@ -35,7 +36,6 @@ Find_criteria <- function( numberOfY, df , entropyThreshold) {
     criteria$entropy[i] <- tmpEntropy[which.min(tmpEntropy)]
   }
   
-  
   if( originEntropy < min(criteria$entropy) ||
       min(criteria$entropy) == 0 ||
       min(criteria$entropy) < entropyThreshold ) {
@@ -45,18 +45,10 @@ Find_criteria <- function( numberOfY, df , entropyThreshold) {
   return( list( colNumber=which.min(criteria$entropy),
                 value=criteria$criteria[which.min(criteria$entropy)],
                 entropy=min(criteria$entropy) ) )
-  # criteriaCol <- which.min(criteria$entropy) 
-  # criteriaValue <- criteria$criteria[colnumber]
-  # library(stringr)
-  # SplitCriteria <- str_c( colnames(df)[[criteriaCol]] , " <= " , criteriaValue )
-  # 
-  # return( list( SplitCriteria = SplitCriteria, criteriaCol = criteriaCol , criteriaValue = criteriaValue ) )
 }
 
-# numberOfY<-4
-# df
 
-rpart_ <- function( numberOfY, df , originEntropy = -99 , depth = 0 , side=0 , entropyThreshold=0.2 ) {
+rpart_ <- function( numberOfY, df, originEntropy=-99, depth=0, side=0, entropyThreshold=0.2 ) {
   Get_mode <- function(df) {
     uniqv <- unique(df)
     return( as.character(uniqv[which.max(tabulate(match(df, uniqv)))] ) )
@@ -72,24 +64,27 @@ rpart_ <- function( numberOfY, df , originEntropy = -99 , depth = 0 , side=0 , e
   
   criteria <- Find_criteria(numberOfY, df, entropyThreshold)
   newEntropy <- criteria$entropy 
-  
-  if( originEntropy == -99 ){
+  if( originEntropy == -99 ){ # root node일 경우, 초기화
     originEntropy<- newEntropy
   }
   
-  if( criteria$colNumber == -1  || 
-      originEntropy < newEntropy ){
+  #TODO depth가 입력되면 depth이하의 tree 생성
+  
+  if( criteria$colNumber == -1  || originEntropy < newEntropy ){
+    # Leaf node 
     Print_tab(depth-1, side)
-    if( side == -1 ){
+    if( side == -1 ) {
       cat( "L- <", Get_mode(df[,numberOfY]) , ">\n" )
-    }else if ( side == 1) {
+    } else if ( side == 1) {
       cat( "R- <", Get_mode(df[,numberOfY]) , ">\n" )   
     }
-  }else{
+  } else {
+    # Split tree
     originEntropy <- newEntropy
     colNumber <- criteria$colNumber
     value <- criteria$value
     
+    library(stringr)
     SplitCriteria <- str_c( colnames(df)[[colNumber]] , " <= " , value )
     Print_tab(depth, side)
     cat(SplitCriteria , "\n" )
@@ -104,34 +99,25 @@ rpart_ <- function( numberOfY, df , originEntropy = -99 , depth = 0 , side=0 , e
 }
 
 
-
-
+### ### Test 1 ### ###
 df <- iris
 rpart_(5, df, entropyThreshold=0.2)
-### refer. using R code ###
+
+### Refer. using R code ###
 library(rpart)
 model_ref <- rpart(Species ~., data=iris)
-model_ref
 plot(model_ref, compress=TRUE, margin=.2)
 text(model_ref, cex=1.5)
-### ### ### ### ### ### ###
 
 
+### ### Test 2 ### ###
 df <- USArrests
 df$UrbanPop1 <- ifelse(df$UrbanPop> median(USArrests$UrbanPop), "Large", "Small")
-df <- df[, names(df)!="UrbanPop"] # UrbanPop ����
-
+df <- df[, names(df)!="UrbanPop"] 
 rpart_(4, df,  entropyThreshold=0.5)
-### refer. using R code ###
-summary(df)
+
+### Refer. using R code ###
 model_ref <- rpart(UrbanPop1 ~ ., data = df, method = "class")
-model_ref
 plot(model_ref, compress=TRUE, margin=.2)
 text(model_ref, cex=1.5)
 ### ### ### ### ### ### ###
-
-
-
-
-
-
