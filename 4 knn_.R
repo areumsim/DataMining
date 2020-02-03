@@ -16,3 +16,4 @@ knn_ <- function(test, traing, trainingY, k){
   result <- apply(test, 1, function(x) { knn_individual( t(x), traing, trainingY, k )} )
   return ( result )
 }
+
