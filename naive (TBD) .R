@@ -87,3 +87,4 @@ library(e1071)
 fit_ref <- naiveBayes(diabetes~., data = train)
 pred_ref <- predict(fit_ref, test, type='class')
 confusionMatrix(pred_ref, test$diabetes)$table
+
