@@ -56,6 +56,7 @@ predict_ <- function( model , df ){
   return( pred_List )
 }
 
+
 ### ### Data onlyBinary ### ###
 data(HouseVotes84, package = "mlbench")
 data <- na.omit(HouseVotes84)
