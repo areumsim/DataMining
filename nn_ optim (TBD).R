@@ -70,3 +70,4 @@ nn_(X, Y)
 library(nnet)
 model <- nnet(Y~ ., data = cbind(X,Y), size = 2, decay = 5e-04)
 summary(model)
+
