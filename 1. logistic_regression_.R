@@ -1,15 +1,3 @@
-### Test Data
-set.seed(2016)
-x0 = rep(1,30) #bias
-x1 = rnorm(30,3,2) + 0.1*c(1:30)
-x2 = rbinom(30, 1,0.3)
-x3 = rpois(n = 30, lambda = 4)
-x3[16:30] = x3[16:30] - rpois(n = 15, lambda = 2)
-X = cbind(x0,x1,x2,x3)
-
-  # dependent variable 
-y = c(rbinom(5, 1,0.1),rbinom(10, 1,0.25),rbinom(10, 1,0.75),rbinom(5, 1,0.9))
-
 
 logistic_regression_ <- function(X, y) {
   calc_p <- function(X, beta)
@@ -45,9 +33,24 @@ logistic_regression_ <- function(X, y) {
     return( coef = c("(Intercept)" = beta[1], x1 = beta[2], x2 = beta[3], x3 = beta[4]) )
 }
 
+
+### Test Data
+set.seed(2016)
+x0 = rep(1,30) #bias
+x1 = rnorm(30,3,2) + 0.1*c(1:30)
+x2 = rbinom(30, 1,0.3)
+x3 = rpois(n = 30, lambda = 4)
+x3[16:30] = x3[16:30] - rpois(n = 15, lambda = 2)
+X = cbind(x0,x1,x2,x3)
+
+# dependent variable 
+y = c(rbinom(5, 1,0.1),rbinom(10, 1,0.25),rbinom(10, 1,0.75),rbinom(5, 1,0.9))
+
+
+### Run 
 logistic_regression_(X,y)
 
-#Refer. using R package 
+### Refer. using R package 
 model = glm(y~x1+x2+x3, family = "binomial")
 model$coefficients
 
