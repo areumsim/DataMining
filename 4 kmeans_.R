@@ -1,3 +1,4 @@
+
 kmeans_ <- function(df, k){
   set.seed(2016)
   center <- df[sample(nrow(df), k), ] #initial center
