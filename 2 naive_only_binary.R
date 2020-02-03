@@ -1,6 +1,3 @@
-##### naive_onlyBinary #####
-data(HouseVotes84, package = "mlbench")
-data <- na.omit(HouseVotes84)
 
 Bayes_ <- function(Class, df){ 
   neg <- levels(Class)[1]
@@ -30,7 +27,7 @@ Bayes_ <- function(Class, df){
 
 predict_ <- function( model , df ){
   pred_List <- rep(0, nrow(df))
-  
+ 
   # prior probability
   prob_neg <-  model$Probabilities[[1]]
   prob_pos <- model$Probabilities[[2]]
@@ -59,14 +56,16 @@ predict_ <- function( model , df ){
   return( pred_List )
 }
 
+### ### Data onlyBinary ### ###
+data(HouseVotes84, package = "mlbench")
+data <- na.omit(HouseVotes84)
 
-
-### Run ### ###
+### Run ### 
 model <- Bayes_( data[,1], data[,-1])
 pred <- predict_(model, data[,-1])
 table(pred, data$Class)
 
-### Refer with R method ###
+### Refer . using R method ###
 library(e1071)
 model_ref <- naiveBayes(Class ~ ., data = data)
 pred_ref <- predict(model_ref, data[,-1])
