@@ -1,6 +1,8 @@
+
 sigmoid_ <- function( x ) {
   return(  1 / (1 + exp(-x)) )
 }
+
 
 costW <- function( par, y, x, v ){ 
   w <- as.matrix(par)
@@ -12,6 +14,7 @@ costW <- function( par, y, x, v ){
   return( err )
 }
 
+
 costV <- function( par, y, x, w ){ 
   v <- par
   
@@ -21,6 +24,7 @@ costV <- function( par, y, x, w ){
   err <- sum( (y-y_hat)^2 )/2
   return( err )
 }
+
 
 nn_ <- function(x, y, hiddenSize = 5, learn_rate = 0.0001 , iterations = 10 ) {
   x <- as.matrix(x)
@@ -45,7 +49,8 @@ nn_ <- function(x, y, hiddenSize = 5, learn_rate = 0.0001 , iterations = 10 ) {
   list(output = ff$output, w1 = w1, w2 = w2)
 }
 
-### DATA 
+
+### ### DATA ### ###
 set.seed(2016)
 x0 = rep(1,30) #bias
 x1 = rnorm(30,3,2) + 0.1*c(1:30)
@@ -57,11 +62,11 @@ Y = c(rbinom(5, 1,0.1),rbinom(10, 1,0.25),rbinom(10, 1,0.75),rbinom(5, 1,0.9))
 X = cbind(x0,x1,x2,x3)
 
 
-### for Test
+### Run for Test ###
 nn_(X, Y)
 
 
-### Refer. using R method
+### Refer. using R method ###
 library(nnet)
 model <- nnet(Y~ ., data = cbind(X,Y), size = 2, decay = 5e-04)
 summary(model)
